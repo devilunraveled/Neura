@@ -5,11 +5,12 @@
 '''
 
 class Neuron:
-    def __init__( self, classIndex , domain = [0,1] ):
+    def __init__( self, layerIndex , domain = [0,1] ):
         self.layer = -1
         self.value = 0
-        self.index = classIndex
+        self.index = layerIndex
         self.bias = 0
+        self.domain = domain
 
     def rectify( self , newValue ):
         try :
