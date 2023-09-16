@@ -2,9 +2,15 @@
     This is the class that deals with the arrangement
     of Neurons in a particular layer.
 '''
+import sys
+sys.path.append('/home/devilunraveled/Projects/NeuralNetworks/NN')
+
+
+import defaults.py as env
+from .neuron import Neuron
 
 class Layer:
-    def __init__(self, layerIndex, layerSize = DEFAULT_LAYER_SIZE, domain = [0,1] ):
+    def __init__(self, layerIndex, layerSize = env.DEFAULT_LAYER_SIZE, domain = [0,1] ):
         self.index = layerIndex
         self.size = layerSize
         self.neurons = []
