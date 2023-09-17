@@ -1,4 +1,4 @@
-from logs.logger import Log
+from logs.logger import Logger
 
 '''
     This is the primitive class `Neuron`, 
@@ -15,14 +15,14 @@ class Neuron:
         :param activation: Default activation of the neuron.
         :param bias: Default bias of the neuron.
     '''
-    def __init__( self, layer : int, layerIndex : int, domain = [0,1], activation = 0.0, bias = 0.0 ):
+    def __init__( self, layer : int, index : int, domain = [0,1], activation = 0.0, bias = 0.0 ):
         self.layer = layer
         self.activation = activation
-        self.index = layerIndex
+        self.index = index
         self.bias = bias
         self.domain = domain
 
-        self.logger = Log()
+        self.logger = Logger()
     
     def setActivation(self, newActivation):
         try :

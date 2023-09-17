@@ -13,7 +13,7 @@ class Colors:
     UNDERLINE = '\033[4m'
     CRITICAL = EXCEPTION + UNDERLINE
 
-class Log :
+class Logger:
     def __init__(self, fileName = './logs.txt', 
                  fileformat = '%(asctime)s - %(levelname)s - %(message)s',
                  stereamformat = '%(name)s - %(levelname)s - %(message)s',
@@ -105,7 +105,7 @@ class Log :
 
 
 if __name__ == '__main__':
-    thisLogger = Log()
+    thisLogger = Logger()
     thisLogger.logDebug("This is a debug message")
     thisLogger.logInfo("This is an info message")
     thisLogger.logWarning("This is a warning message")
