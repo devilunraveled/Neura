@@ -8,7 +8,7 @@ from .neuron import Neuron
 
 
 class Layer:
-    def __init__(self, layerIndex, layerSize = 8, domain = [0,1] ):
+    def __init__(self, layerIndex, layerSize = 8, domain = [0,1], activation = None):
         self.index = layerIndex
         self.size = layerSize
         self.neurons = []
@@ -18,7 +18,7 @@ class Layer:
 
         try:
             for neuronId in range (self.size):
-                neuron = Neuron( layer=layerIndex, index=neuronId, domain = domain )
+                neuron = Neuron( layer=layerIndex, index=neuronId, domain = domain, activation = activation )
                 self.neurons.append(neuron)
             self.__instantiated__ = True
             self.logger.logInfo("Layer created.")

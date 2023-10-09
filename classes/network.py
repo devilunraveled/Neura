@@ -54,7 +54,11 @@ class NeuralNetwork:
         
         self.__weights__ = False
         self.__layers__ = False 
-
+    
+    '''
+        Fills the weights of the network
+        with random values for initialization.
+    '''
     def fillWeights(self):
         try :
             startTime = process_time()
@@ -69,13 +73,21 @@ class NeuralNetwork:
         except Exception as E:
             self.logger.logException(message=str(E))
             return Failure()
-
-    def initializeLayers(self, domain = [0,1]):
+    
+    '''
+        Initializes the layers of the network
+    '''
+    def initializeLayers(self, domain = [0,1], initialActivation = None):
         try :
             startTime = process_time()
-
+            
             for layerIndex in range(self.layerVector.size):
-                self.layers[layerIndex] = Layer(layerIndex, self.layerVector[layerIndex], domain = domain)
+                if ( initialActivation == None ):
+                    thisActivation = random.random(domain[0], domain[1])
+                else :
+                    thisActivation = initialActivation
+
+                self.layers[layerIndex] = Layer(layerIndex, self.layerVector[layerIndex], domain = domain, activation = thisActivation)
                 self.__layers__ = True
 
             totalTime = process_time() - startTime

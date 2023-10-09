@@ -15,8 +15,10 @@ class Neuron:
         :param activation: Default activation of the neuron.
         :param bias: Default bias of the neuron.
     '''
-    def __init__( self, layer : int, index : int, domain = [0,1], activation = 0.0, bias = 0.0 ):
+    def __init__( self, layer : int, index : int, domain = [0,1], activation = None, bias = 0.0 ):
         self.layer = layer
+        if ( activation == None ):
+            activation = 0.0
         self.activation = activation
         self.index = index
         self.bias = bias
