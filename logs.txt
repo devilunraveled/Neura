@@ -1,0 +1,274 @@
+2023-10-17 01:59:49,665 - INFO - Layer -1 created.
+2023-10-17 01:59:49,666 - INFO - Layer 0 created.
+2023-10-17 01:59:49,666 - INFO - Layer 1 created.
+2023-10-17 01:59:49,666 - INFO - Layer 2 created.
+2023-10-17 01:59:49,666 - INFO - Layer 3 created.
+2023-10-17 01:59:49,666 - INFO - Setting activation vector for layer 0
+2023-10-17 01:59:49,666 - WARNING - Activation value is out of range. No change made.
+2023-10-17 01:59:49,667 - WARNING - Provided Activation: 0.6660723609263421
+2023-10-17 01:59:49,667 - WARNING - Activation value is out of range. No change made.
+2023-10-17 01:59:49,667 - WARNING - Provided Activation: 0.5273404372643045
+2023-10-17 01:59:49,667 - WARNING - Activation value is out of range. No change made.
+2023-10-17 01:59:49,667 - WARNING - Provided Activation: 0.09113185193760931
+2023-10-17 01:59:49,667 - WARNING - Activation value is out of range. No change made.
+2023-10-17 01:59:49,667 - WARNING - Provided Activation: 0.3436478482982972
+2023-10-17 01:59:49,667 - INFO - Training started.
+2023-10-17 01:59:49,667 - INFO - Computing forward propagation.
+2023-10-17 01:59:49,667 - INFO - Getting activation vector for layer 0
+2023-10-17 01:59:49,668 - INFO - Getting bias vector for layer 1
+2023-10-17 01:59:49,668 - ERROR - The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 222, in computeForwardPropagation
+    if ( layerValues == None ):
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2023-10-17 01:59:49,668 - ERROR - __str__ returned non-string (type NoneType)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 110, in train
+    print(f"Layer {layerIndex} : {layer}")
+TypeError: __str__ returned non-string (type NoneType)
+2023-10-17 02:00:53,433 - INFO - Layer -1 created.
+2023-10-17 02:00:53,433 - INFO - Layer 0 created.
+2023-10-17 02:00:53,433 - INFO - Layer 1 created.
+2023-10-17 02:00:53,434 - INFO - Layer 2 created.
+2023-10-17 02:00:53,434 - INFO - Layer 3 created.
+2023-10-17 02:00:53,434 - INFO - Setting activation vector for layer 0
+2023-10-17 02:00:53,434 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:00:53,434 - WARNING - Provided Activation: 0.8645286654751296
+2023-10-17 02:00:53,435 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:00:53,435 - WARNING - Provided Activation: 0.3012798909881126
+2023-10-17 02:00:53,435 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:00:53,435 - WARNING - Provided Activation: 0.5348570709776208
+2023-10-17 02:00:53,435 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:00:53,435 - WARNING - Provided Activation: 0.975278307723181
+2023-10-17 02:00:53,435 - INFO - Training started.
+2023-10-17 02:00:53,435 - INFO - Computing forward propagation.
+2023-10-17 02:00:53,435 - INFO - Getting activation vector for layer 0
+2023-10-17 02:00:53,436 - INFO - Getting bias vector for layer 1
+2023-10-17 02:00:53,436 - ERROR - The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 222, in computeForwardPropagation
+    if ( layerValues == None ):
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2023-10-17 02:00:53,437 - ERROR - __str__ returned non-string (type NoneType)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 110, in train
+    print(f"Layer {layerIndex} : {layer}")
+TypeError: __str__ returned non-string (type NoneType)
+2023-10-17 02:01:18,800 - INFO - Layer -1 created.
+2023-10-17 02:01:18,800 - INFO - Layer 0 created.
+2023-10-17 02:01:18,808 - INFO - Layer 1 created.
+2023-10-17 02:01:18,808 - INFO - Layer 2 created.
+2023-10-17 02:01:18,808 - INFO - Layer 3 created.
+2023-10-17 02:01:18,808 - INFO - Setting activation vector for layer 0
+2023-10-17 02:01:18,809 - INFO - Training started.
+2023-10-17 02:01:18,809 - INFO - Computing forward propagation.
+2023-10-17 02:01:18,809 - INFO - Getting activation vector for layer 0
+2023-10-17 02:01:18,810 - INFO - Getting bias vector for layer 1
+2023-10-17 02:01:18,810 - ERROR - The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 222, in computeForwardPropagation
+    if ( layerValues == None ):
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2023-10-17 02:01:18,810 - ERROR - __str__ returned non-string (type NoneType)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 110, in train
+    print(f"Layer {layerIndex} : {layer}")
+TypeError: __str__ returned non-string (type NoneType)
+2023-10-17 02:02:03,656 - INFO - Layer -1 created.
+2023-10-17 02:02:03,657 - INFO - Layer 0 created.
+2023-10-17 02:02:03,657 - INFO - Layer 1 created.
+2023-10-17 02:02:03,657 - INFO - Layer 2 created.
+2023-10-17 02:02:03,657 - INFO - Layer 3 created.
+2023-10-17 02:02:03,657 - INFO - Setting activation vector for layer 0
+2023-10-17 02:02:03,657 - INFO - Training started.
+2023-10-17 02:02:03,657 - INFO - Computing forward propagation.
+2023-10-17 02:02:03,657 - INFO - Getting activation vector for layer 0
+2023-10-17 02:02:03,657 - INFO - Getting bias vector for layer 1
+2023-10-17 02:02:03,658 - ERROR - matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 4 is different from 16)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 233, in computeForwardPropagation
+    self.layers[layerIndex].updateLayer((weights @ layerValues) + bias)
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 4 is different from 16)
+2023-10-17 02:02:03,659 - ERROR - __str__ returned non-string (type NoneType)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 110, in train
+    print(f"Layer {layerIndex} : {layer}")
+TypeError: __str__ returned non-string (type NoneType)
+2023-10-17 02:03:19,104 - INFO - Layer -1 created.
+2023-10-17 02:03:19,104 - INFO - Layer 0 created.
+2023-10-17 02:03:19,104 - INFO - Layer 1 created.
+2023-10-17 02:03:19,105 - INFO - Layer 2 created.
+2023-10-17 02:03:19,105 - INFO - Layer 3 created.
+2023-10-17 02:03:19,105 - INFO - Setting activation vector for layer 0
+2023-10-17 02:03:19,105 - INFO - Training started.
+2023-10-17 02:03:19,105 - INFO - Computing forward propagation.
+2023-10-17 02:03:19,105 - INFO - Getting activation vector for layer 0
+2023-10-17 02:03:19,106 - INFO - Getting bias vector for layer 1
+2023-10-17 02:03:19,106 - ERROR - matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 4 is different from 16)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 234, in computeForwardPropagation
+    self.layers[layerIndex].updateLayer((weights @ layerValues) + bias)
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 4 is different from 16)
+2023-10-17 02:09:03,020 - INFO - Layer -1 created.
+2023-10-17 02:09:03,021 - INFO - Layer 0 created.
+2023-10-17 02:09:03,021 - INFO - Layer 1 created.
+2023-10-17 02:09:03,021 - INFO - Layer 2 created.
+2023-10-17 02:09:03,021 - INFO - Layer 3 created.
+2023-10-17 02:09:03,022 - INFO - Setting activation vector for layer 0
+2023-10-17 02:09:03,022 - INFO - Training started.
+2023-10-17 02:09:03,022 - INFO - Computing forward propagation.
+2023-10-17 02:09:03,022 - INFO - Getting activation vector for layer 0
+2023-10-17 02:09:03,022 - INFO - Getting bias vector for layer 1
+2023-10-17 02:09:03,022 - ERROR - matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 234, in computeForwardPropagation
+    self.layers[layerIndex].updateLayer((layerValues @ weights) + bias)
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+2023-10-17 02:11:31,677 - INFO - Layer -1 created.
+2023-10-17 02:11:31,678 - INFO - Layer 0 created.
+2023-10-17 02:11:31,678 - INFO - Layer 1 created.
+2023-10-17 02:11:31,678 - INFO - Layer 2 created.
+2023-10-17 02:11:31,678 - INFO - Layer 3 created.
+2023-10-17 02:11:31,679 - INFO - Setting activation vector for layer 0
+2023-10-17 02:11:31,679 - INFO - Training started.
+2023-10-17 02:11:31,679 - INFO - Computing forward propagation.
+2023-10-17 02:11:31,679 - INFO - Getting activation vector for layer 0
+2023-10-17 02:11:31,679 - INFO - Getting bias vector for layer 1
+2023-10-17 02:11:31,681 - ERROR - matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 236, in computeForwardPropagation
+    self.layers[layerIndex].updateLayer((layerValues @ weights) + bias)
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+2023-10-17 02:17:27,396 - INFO - Layer -1 created.
+2023-10-17 02:17:27,396 - INFO - Layer 0 created.
+2023-10-17 02:17:27,396 - INFO - Layer 1 created.
+2023-10-17 02:17:27,396 - INFO - Layer 2 created.
+2023-10-17 02:17:27,396 - INFO - Layer 3 created.
+2023-10-17 02:17:27,396 - INFO - Setting activation vector for layer 0
+2023-10-17 02:17:27,397 - INFO - Training started.
+2023-10-17 02:17:27,397 - INFO - Computing forward propagation.
+2023-10-17 02:17:27,397 - INFO - Getting activation vector for layer 0
+2023-10-17 02:17:27,397 - INFO - Getting bias vector for layer 1
+2023-10-17 02:17:27,398 - ERROR - matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 238, in computeForwardPropagation
+    self.layers[layerIndex].updateLayer((layerValues @ weights.T) + bias)
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+2023-10-17 02:18:32,076 - INFO - Layer -1 created.
+2023-10-17 02:18:32,076 - INFO - Layer 0 created.
+2023-10-17 02:18:32,076 - INFO - Layer 1 created.
+2023-10-17 02:18:32,076 - INFO - Layer 2 created.
+2023-10-17 02:18:32,076 - INFO - Layer 3 created.
+2023-10-17 02:18:32,076 - INFO - Setting activation vector for layer 0
+2023-10-17 02:18:32,078 - INFO - Training started.
+2023-10-17 02:18:32,078 - INFO - Computing forward propagation.
+2023-10-17 02:18:32,078 - INFO - Getting activation vector for layer 0
+2023-10-17 02:18:32,078 - INFO - Getting bias vector for layer 1
+2023-10-17 02:18:32,080 - ERROR - matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 237, in computeForwardPropagation
+    self.layers[layerIndex].updateLayer((layerValues @ weights.T) + bias)
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+2023-10-17 02:19:12,875 - INFO - Layer -1 created.
+2023-10-17 02:19:12,876 - INFO - Layer 0 created.
+2023-10-17 02:19:12,876 - INFO - Layer 1 created.
+2023-10-17 02:19:12,876 - INFO - Layer 2 created.
+2023-10-17 02:19:12,876 - INFO - Layer 3 created.
+2023-10-17 02:19:12,876 - INFO - Setting activation vector for layer 0
+2023-10-17 02:19:12,878 - INFO - Training started.
+2023-10-17 02:19:12,878 - INFO - Computing forward propagation.
+2023-10-17 02:19:12,878 - INFO - Getting activation vector for layer 0
+2023-10-17 02:19:12,878 - INFO - Getting bias vector for layer 1
+2023-10-17 02:19:12,880 - ERROR - matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/network.py", line 237, in computeForwardPropagation
+    self.layers[layerIndex].updateLayer((layerValues @ weights.T) + bias)
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 16 is different from 4)
+2023-10-17 02:20:05,475 - INFO - Layer -1 created.
+2023-10-17 02:20:05,475 - INFO - Layer 0 created.
+2023-10-17 02:20:05,475 - INFO - Layer 1 created.
+2023-10-17 02:20:05,475 - INFO - Layer 2 created.
+2023-10-17 02:20:05,475 - INFO - Layer 3 created.
+2023-10-17 02:20:05,475 - INFO - Setting activation vector for layer 0
+2023-10-17 02:20:05,476 - INFO - Training started.
+2023-10-17 02:20:05,476 - INFO - Computing forward propagation.
+2023-10-17 02:20:05,476 - INFO - Getting activation vector for layer 0
+2023-10-17 02:20:05,476 - INFO - Getting bias vector for layer 1
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,485 - WARNING - Provided Activation: 1.09422832586248
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,485 - WARNING - Provided Activation: 1.4209446528618506
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,485 - WARNING - Provided Activation: 1.3158771793371382
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,485 - WARNING - Provided Activation: 1.0935584498537
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,485 - WARNING - Provided Activation: 1.0572879048161539
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,485 - WARNING - Provided Activation: 1.2270503895567024
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,485 - WARNING - Provided Activation: 1.5626951151758737
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,485 - WARNING - Provided Activation: 1.2888804434193393
+2023-10-17 02:20:05,485 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,486 - WARNING - Provided Activation: 1.7238482562807946
+2023-10-17 02:20:05,486 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,486 - WARNING - Provided Activation: 1.1356066395806523
+2023-10-17 02:20:05,486 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,486 - WARNING - Provided Activation: 1.0481622742906904
+2023-10-17 02:20:05,486 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,486 - WARNING - Provided Activation: 2.097391180822293
+2023-10-17 02:20:05,486 - INFO - Layer Values updated.
+2023-10-17 02:20:05,486 - INFO - Getting activation vector for layer 1
+2023-10-17 02:20:05,486 - INFO - Getting bias vector for layer 2
+2023-10-17 02:20:05,487 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 2.307809293301154
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.5231908953581637
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.2797536834155914
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.351582028643278
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.7505942733325641
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.6705408259726384
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.9276786926595968
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.2041438934591713
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.3999757598456766
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.9085644675432931
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.3708823479555017
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.2234356179203216
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.8630760863265947
+2023-10-17 02:20:05,488 - WARNING - Activation value is out of range. No change made.
+2023-10-17 02:20:05,488 - WARNING - Provided Activation: 1.897025725390701
+2023-10-17 02:20:05,488 - INFO - Layer Values updated.
+2023-10-17 02:20:05,488 - INFO - Getting activation vector for layer 2
+2023-10-17 02:20:05,488 - INFO - Getting bias vector for layer 3
+2023-10-17 02:20:05,489 - INFO - Layer Values updated.
+2023-10-17 02:20:05,489 - INFO - Forward propagation completed.
+2023-10-17 02:26:59,987 - INFO - Layer -1 created.
+2023-10-17 02:26:59,988 - INFO - Layer 0 created.
+2023-10-17 02:26:59,988 - INFO - Layer 1 created.
+2023-10-17 02:26:59,988 - INFO - Layer 2 created.
+2023-10-17 02:26:59,988 - INFO - Layer 3 created.
+2023-10-17 02:26:59,988 - INFO - Setting activation vector for layer 0
+2023-10-17 02:26:59,989 - INFO - Training started.
+2023-10-17 02:26:59,989 - INFO - Computing forward propagation.
+2023-10-17 02:26:59,989 - INFO - Getting activation vector for layer 0
+2023-10-17 02:26:59,989 - INFO - Getting bias vector for layer 1
+2023-10-17 02:26:59,991 - INFO - Layer Values updated.
+2023-10-17 02:26:59,991 - INFO - Getting activation vector for layer 1
+2023-10-17 02:26:59,991 - INFO - Getting bias vector for layer 2
+2023-10-17 02:26:59,996 - INFO - Layer Values updated.
+2023-10-17 02:26:59,996 - INFO - Getting activation vector for layer 2
+2023-10-17 02:26:59,996 - INFO - Getting bias vector for layer 3
+2023-10-17 02:26:59,997 - INFO - Layer Values updated.
+2023-10-17 02:26:59,998 - INFO - Forward propagation completed.

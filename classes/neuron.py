@@ -15,7 +15,7 @@ class Neuron:
         :param activation: Default activation of the neuron.
         :param bias: Default bias of the neuron.
     '''
-    def __init__( self, layer : int, index : int, domain = [0,1], activation = None, bias = 0.0 ):
+    def __init__( self, layer : int, index : int, domain = [0.0,1.0], activation = None, bias = 0.0, logger = None ):
         self.layer = layer
         if ( activation == None ):
             activation = 0.0
@@ -23,15 +23,18 @@ class Neuron:
         self.index = index
         self.bias = bias
         self.domain = domain
-
-        self.logger = Logger()
+        
+        if ( logger == None):
+            logger = Logger()
+        self.logger = logger
     
     def setActivation(self, newActivation):
         try :
-            if ( newActivation < self.domain[0] or newActivation > self.domain[1] ):
+            if ( newActivation > self.domain[0] and newActivation < self.domain[1] ):
                 self.activation = newActivation
             else :
                 self.logger.logWarning("Activation value is out of range. No change made.")
+                self.logger.logWarning(f"Provided Activation: {newActivation}")
         except Exception as E :
             self.logger.logException(message=str(E))
     

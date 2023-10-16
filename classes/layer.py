@@ -1,27 +1,30 @@
+from logs.logger import Logger
+
 '''
     This is the class that deals with the arrangement
     of Neurons in a particular layer.
 '''
 import numpy
-from logs.logger import Logger
 from .neuron import Neuron
 
 
 class Layer:
-    def __init__(self, layerIndex, layerSize = 8, domain = [0,1], activation = None):
+    def __init__(self, layerIndex, layerSize = 8, domain = [0.0,1.0], activation = None, logger = None):
         self.index = layerIndex
         self.size = layerSize
         self.neurons = []
         self.__instantiated__ = False
-
-        self.logger = Logger()
+        
+        if ( logger == None):
+            logger = Logger()
+        self.logger = logger
 
         try:
             for neuronId in range (self.size):
-                neuron = Neuron( layer=layerIndex, index=neuronId, domain = domain, activation = activation )
+                neuron = Neuron( layer=layerIndex, index=neuronId, domain = domain, activation = activation, logger = self.logger )
                 self.neurons.append(neuron)
             self.__instantiated__ = True
-            self.logger.logInfo("Layer created.")
+            self.logger.logInfo(f"Layer {layerIndex} created.")
         except Exception as E:
             self.logger.logException(message=str(E))
     
@@ -52,6 +55,18 @@ class Layer:
             self.logger.logException(message=str(E))
     
     '''
+        Sets the vector of activations
+        for the layer.
+    '''
+    def setVector(self, newValues):
+        try :
+            self.logger.logInfo(f"Setting activation vector for layer {self.index}")
+            for neuronId in range ( self.size ):
+                self.neurons[neuronId].setActivation( newValues[neuronId] )
+        except Exception as E:
+            self.logger.logException(message=str(E))
+
+    '''
         Returns the vector of biases
         of the neurons in the layer.
     '''
@@ -61,3 +76,9 @@ class Layer:
             return numpy.array([neuron.bias for neuron in self.neurons])
         except Exception as E:
             self.logger.logException(message=str(E))
+
+    def __str__(self):
+        string = ""
+        for neuron in self.neurons:
+            string += f"{neuron.activation}\n"
+        return string

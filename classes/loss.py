@@ -4,6 +4,12 @@ from logs.logger import Logger
 class Loss :
     def __init__(self):
         self.logger = Logger()
+    
+    def computeFunction(self, predicted : numpy.ndarray, actual : numpy.ndarray ):
+        pass
+    
+    def computeDerivative(self, predicted : numpy.ndarray, actual : numpy.ndarray, pointOfDerivative : int ):
+        pass
 
 class MeanSquaredError(Loss):
     def __init__(self):

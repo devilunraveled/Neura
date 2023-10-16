@@ -3,10 +3,12 @@
 '''
 from time import process_time
 import numpy
+import random
 
 from logs.logger import Logger
 from .response import Success, Failure
 from .layer import Layer
+from .activations import Activation
 
 '''
     The main NeuralNetwork class
@@ -17,7 +19,7 @@ class NeuralNetwork:
     def __init__(self, numInputFeautures : int , numOutputFeatures : int, 
                  numHiddenLayers = 2, layerVector = [16,16], domain = [0,1],
                  intermediateActivationFunction = None, endActivationFunction = None,
-                 backPropagationAlgorithm = None, lossFunction = None):
+                 backPropagationAlgorithm = None, lossFunction = None, logger = Logger()):
 
         self.numInputFeautures = numInputFeautures
         self.inputFeautures = numpy.array(numInputFeautures)
@@ -26,31 +28,16 @@ class NeuralNetwork:
         self.outputFeatures = numpy.array(numOutputFeatures)
         
         self.numHiddenLayers = numHiddenLayers
-        self.layers = numpy.array(numHiddenLayers + 2)
+        
+        self.layers = [Layer(-1, logger=logger)] * (self.numHiddenLayers + 2)
+        self.layerActivation = [Activation()] * (self.numHiddenLayers + 2)
         self.layerVector = [numInputFeautures] + layerVector + [numOutputFeatures]
         
         self.weights = []
 
         self.domain = domain
 
-        self.intermediateActivationFunction = self.__leakyRelu
-        if ( intermediateActivationFunction != None ):
-            self.intermediateActivationFunction = intermediateActivationFunction
-
-        self.endActivationFunction = self.__softMax
-        if ( endActivationFunction != None ):
-            self.endActivationFunction = endActivationFunction
-        
-        self.backPropagationAlgorithm = self.__stochasticGradientDescent
-        if ( backPropagationAlgorithm != None ):
-            self.backPropagationAlgorithm = backPropagationAlgorithm
-        
-        self.lossFunction = self.__meanSquaredError
-        if ( lossFunction != None ):
-            self.lossFunction = lossFunction
-
-
-        self.logger = Logger()
+        self.logger = logger
         
         self.__weights__ = False
         self.__layers__ = False 
@@ -63,12 +50,14 @@ class NeuralNetwork:
         try :
             startTime = process_time()
 
-            for layerIndex in range(self.layerVector.size - 1):
+            for layerIndex in range(len(self.layerVector) - 1):
                 self.weights.append(numpy.random.rand(self.layerVector[layerIndex], self.layerVector[layerIndex + 1]))
-                self.__weights__ = True
-
+            
+            self.__weights__ = True
+            
             totalTime = process_time() - startTime
 
+            print(self.weights[0])
             return Success(time = totalTime)
         except Exception as E:
             self.logger.logException(message=str(E))
@@ -77,17 +66,17 @@ class NeuralNetwork:
     '''
         Initializes the layers of the network
     '''
-    def initializeLayers(self, domain = [0,1], initialActivation = None):
+    def initializeLayers(self, domain = [0.0,1.0], initialActivation = None):
         try :
             startTime = process_time()
             
-            for layerIndex in range(self.layerVector.size):
+            for layerIndex in range(len(self.layerVector)):
                 if ( initialActivation == None ):
-                    thisActivation = random.random(domain[0], domain[1])
+                    thisActivation = random.randrange(domain[0], domain[1])
                 else :
                     thisActivation = initialActivation
-
-                self.layers[layerIndex] = Layer(layerIndex, self.layerVector[layerIndex], domain = domain, activation = thisActivation)
+                
+                self.layers[layerIndex] = Layer(layerIndex, self.layerVector[layerIndex], domain = domain, activation = thisActivation, logger= self.logger)
                 self.__layers__ = True
 
             totalTime = process_time() - startTime
@@ -100,30 +89,37 @@ class NeuralNetwork:
     def feedInputFeatures(self, inputFeautures):
         try :
             self.inputFeautures = inputFeautures
+            self.layers[0].setVector(self.inputFeautures)
             return Success(True)
         except Exception as E :
             self.logger.logException(message=str(E))
             return Failure()
 
-    def train(self, targetEpochs = 50, hyperParameters : dict = {}, displayIntermediateResults : bool = False):
+    def train(self, targetEpochs = 1, hyperParameters : dict = {}, displayIntermediateResults : bool = False):
         try :
             startTime = process_time()
             
+            self.logger.logInfo("Training started.")
             epochTimes = []
             for epoch in range(targetEpochs):
                 epochStartTime = process_time()
 
-                self.__computeForwardPropagation()
-                self.__computeLossFunction()
-                self.__updateModelParameters(epoch, hyperParameters=hyperParameters)
+                self.computeForwardPropagation()
+                # self.__computeLossFunction()
+                # self.__updateModelParameters()
                 
+                print(f"Epoch {epoch + 1} : ")
+                
+                for layerIndex, layer in enumerate(self.layers):
+                    print(f"Layer {layerIndex} : {layer}")
+
                 epochTime = process_time() - epochStartTime
                 
                 epochTimes.append(epochTime)
 
-                if ( displayIntermediateResults ):
-                    self.__displayModelResults()
-                    self.logger.logInfo(f"Epoch {epoch + 1} completed. Model performace : {self.__getModelPerformance}")
+                # if ( displayIntermediateResults ):
+                    # self.__displayModelResults()
+                    # self.logger.logInfo(f"Epoch {epoch + 1} completed. Model performace : {self.__getModelPerformance}")
                 
 
             totalTime = process_time() - startTime
@@ -149,7 +145,7 @@ class NeuralNetwork:
         Retrieves the weights preceding a 
         particular layer in the neural network.
     '''
-    def __getWeights(self, layerIndex = 1):
+    def __getWeights(self, layerIndex : int):
         try :
             if ( layerIndex < 0 or layerIndex > self.numHiddenLayers + 2 ):
                 self.logger.logError(message="Invalid layer index.")
@@ -159,7 +155,6 @@ class NeuralNetwork:
 
             self.__refreshWeights()
             layerWeights = self.weights[layerIndex]
-            
             totalTime = process_time() - startTime
 
             return Success(time = totalTime, returnObject = layerWeights)
@@ -171,7 +166,7 @@ class NeuralNetwork:
         Retrieves the vector of the
         activation values of a particular layer.
     '''
-    def __getLayerVector(self, layerIndex):
+    def __getLayerVector(self, layerIndex : int):
         try :
             if ( layerIndex < 0 or layerIndex > self.numHiddenLayers + 2 ):
                 self.logger.logError(message="Invalid layer index.")
@@ -194,7 +189,7 @@ class NeuralNetwork:
         Retrieves the vector of the
         bias values of a particular layer.
     '''
-    def __getBiasVector(self, layerIndex ):
+    def __getBiasVector(self, layerIndex : int ):
         try :
             if ( layerIndex < 0 or layerIndex > self.numHiddenLayers + 2 ):
                 self.logger.logException(message="Invalid layer index.")
@@ -215,27 +210,36 @@ class NeuralNetwork:
         Compute the forward propagation for a 
         single pass of the neural network.
     '''
-    def __computeForwardPropagation(self):
+    def computeForwardPropagation(self):
         try :
             startTime = process_time()
 
             self.logger.logInfo("Computing forward propagation.")
 
-            for layerIndex in range(1,self.layers.size):
+            for layerIndex in range(1,len(self.layers)):
                 
                 layerValues = self.__getLayerVector(layerIndex - 1).returnObject
-                weights = self.__getWeights(layerIndex).returnObject
+                weights = self.__getWeights(layerIndex - 1).returnObject
                 bias = self.__getBiasVector(layerIndex).returnObject
                 
-                if ( layerValues == None ):
+                if ( layerValues is None ):
                     raise Exception(f"Could not get values for layer {layerIndex - 1}.")
-                if ( weights == None ):
+                if ( weights is None ):
                     raise Exception(f"Could not get weights for layer {layerIndex - 1}.")
-                if ( bias == None ):
+                if ( bias is None ):
                     raise Exception(f"Could not get bias for layer {layerIndex - 1}.")
                 
+                print(weights.T)
+                print(layerValues)
                 # Updating the next in line layer.
-                self.layers[layerIndex].updateLayer(weights * layerValues + bias)
+                if ( self.layers[layerIndex] is None ):
+                    self.logger.logWarning(f"Layer {layerIndex} not initialized.")
+                    return Failure()
+                
+                newLayer = weights.T @ layerValues + bias
+                normalizedLayer = [self.layerActivation[layerIndex].sigmoid(x) for x in newLayer]
+
+                self.layers[layerIndex].updateLayer(normalizedLayer)
             
             self.outputFeatures = self.layers[-1]
             self.logger.logInfo("Forward propagation completed.")
@@ -247,24 +251,6 @@ class NeuralNetwork:
             self.logger.logException(message=str(E))
             return Failure()
 
-    def __computeLossFunction(self, actualValues = None, outputFeatures = None ):
-        try :
-            if ( actualValues is None or outputFeatures is None ):
-                raise Exception("Loss function requires actual values and output features.")
-
-            startTime = process_time()
-            self.logger.logInfo("Computing loss function.")
-
-            loss = self.lossFunction(actualValues, outputFeatures).returnObject
-
-            totalTime = process_time() - startTime
-            return Success(time = totalTime, returnObject = loss)
-
-        except Exception as E:
-            self.logger.logException(message=str(E))
-            return Failure()
-        
-
     def __updateModelParameters(self):
         pass
 
@@ -274,44 +260,3 @@ class NeuralNetwork:
     def __getModelPerformance(self):
         pass
     
-    '''
-        Computes the mean squared error between 
-        the actual and predicted values.
-    '''
-    def __meanSquaredError(self, actualValues, predictedValues):
-        try :
-            if ( actualValues.shape() != predictedValues.shape() ):
-                raise Exception("Shapes do not match for predicted and actual values.")
-            
-            startTime = process_time()
-            
-            self.logger.logInfo("Computing mean squared error.")
-            errorVector =  (actualValues - predictedValues)**2
-
-            totalTime = process_time() - startTime
-            
-            return Success(time = totalTime, returnObject = errorVector.mean())
-        except Exception as E :
-            self.logger.logException(message=str(E))
-            return Failure()
-    
-    def __softMax(self, layerValues ):
-        try :
-            startTime = process_time()
-            
-            self.logger.logInfo("Computing softmax.")
-
-            softmax = numpy.exp(layerValues) / numpy.sum(numpy.exp(layerValues))
-            
-            totalTime = process_time() - startTime
-            
-            return Success(time = totalTime, returnObject = softmax)
-        except Exception as E:
-            self.logger.logException(message=str(E))
-            return Failure()
-
-    def __stochasticGradientDescent(self):
-        pass
-
-    def __leakyRelu(self):
-        pass
