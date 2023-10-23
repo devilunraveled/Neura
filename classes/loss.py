@@ -1,23 +1,28 @@
+from typing_extensions import override
 import numpy
 from logs.logger import Logger
 
 class Loss :
-    def __init__(self):
-        self.logger = Logger()
-    
-    def computeFunction(self, predicted : numpy.ndarray, actual : numpy.ndarray ):
+    def __init__(self, logger = None):
+        self.logger = logger if logger != None else Logger() 
+    def computeFunction( self ):
         pass
     
-    def computeDerivative(self, predicted : numpy.ndarray, actual : numpy.ndarray, pointOfDerivative : int ):
+    def computeDerivative( self ):
         pass
 
 class MeanSquaredError(Loss):
-    def __init__(self):
-        pass
-
-    def computeFunction(self, predicted : numpy.ndarray, actual : numpy.ndarray ):
+    def __init__(self, predicted : numpy.ndarray, actual : numpy.ndarray, logger = None):
+        super().__init__(logger = logger)
+        self.predicted = predicted
+        self.actual = actual
+    
+        if ( self.actual.shape != self.predicted.shape ):
+            self.logger.logWarning(message="Shape mismatch for Mean Squared Error Calculation.")
+    @override
+    def computeFunction(self):
         try :
-            if ( actual.shape != predicted.shape ):
+            if ( self.actual.shape != self.predicted.shape ):
                 self.logger.logError(message="Invalid shape provided as argument for MeanSquaredError.")
                 return None
 
@@ -26,7 +31,8 @@ class MeanSquaredError(Loss):
             self.logger.logException(message="MeanSquaredError Function")
             return None
     
-    def computeDerivative(self, predicted : numpy.ndarray, actual : numpy.ndarray ):
+    @override
+    def computeDerivative(self):
         try :
             if ( actual.shape != predicted.shape ):
                 self.logger.logError(message="Invalid shape provided as argument for MeanSquaredError derivative.")
