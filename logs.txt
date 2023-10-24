@@ -272,3 +272,21 @@ ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with
 2023-10-17 02:26:59,996 - INFO - Getting bias vector for layer 3
 2023-10-17 02:26:59,997 - INFO - Layer Values updated.
 2023-10-17 02:26:59,998 - INFO - Forward propagation completed.
+2023-10-24 16:02:07,278 - INFO - Layer -1 created.
+2023-10-24 16:02:07,286 - INFO - Layer 0 created.
+2023-10-24 16:02:07,286 - INFO - Layer 1 created.
+2023-10-24 16:02:07,286 - INFO - Layer 2 created.
+2023-10-24 16:02:07,286 - INFO - Layer 3 created.
+2023-10-24 16:02:07,286 - INFO - Setting activation vector for layer 0
+2023-10-24 16:02:07,288 - INFO - Training started.
+2023-10-24 16:02:07,289 - INFO - Computing forward propagation.
+2023-10-24 16:02:07,289 - INFO - Getting activation vector for layer 0
+2023-10-24 16:02:07,289 - INFO - Getting bias vector for layer 1
+2023-10-24 16:02:07,291 - INFO - Layer Values updated.
+2023-10-24 16:02:07,291 - INFO - Getting activation vector for layer 1
+2023-10-24 16:02:07,291 - INFO - Getting bias vector for layer 2
+2023-10-24 16:02:07,292 - INFO - Layer Values updated.
+2023-10-24 16:02:07,292 - INFO - Getting activation vector for layer 2
+2023-10-24 16:02:07,292 - INFO - Getting bias vector for layer 3
+2023-10-24 16:02:07,293 - INFO - Layer Values updated.
+2023-10-24 16:02:07,293 - INFO - Forward propagation completed.

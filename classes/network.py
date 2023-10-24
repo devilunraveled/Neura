@@ -5,10 +5,12 @@ from time import process_time
 import numpy
 import random
 
+
 from logs.logger import Logger
 from .response import Success, Failure
 from .layer import Layer
 from .activations import Activation
+from .loss import *
 
 '''
     The main NeuralNetwork class
@@ -33,6 +35,10 @@ class NeuralNetwork:
         self.layerActivation = [Activation()] * (self.numHiddenLayers + 2)
         self.layerVector = [numInputFeautures] + layerVector + [numOutputFeatures]
         
+
+        ## Need to check if the loss function provided is valid.
+        self.lossFunction = lossFunction
+
         self.weights = []
 
         self.domain = domain
@@ -94,7 +100,20 @@ class NeuralNetwork:
         except Exception as E :
             self.logger.logException(message=str(E))
             return Failure()
-
+    
+    def setLossFunctions(self, lossFunction : str ):
+        try :
+            # Somehow try to dyanmically check 
+            # whether the function is valid.
+            if ( lossFunction == "MeanSquaredError" ):
+                self.lossFunction = MeanSquaredError
+            else :
+                self.logger.logError(message="Invalid loss function provided.")
+                return Failure()
+            return Success(True)
+        except :
+            self.logger.logException(message=f"Could not set loss function to -{lossFunction}-")
+            return Failure()
     def train(self, targetEpochs = 1, hyperParameters : dict = {}, displayIntermediateResults : bool = False):
         try :
             startTime = process_time()
