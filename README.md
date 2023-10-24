@@ -21,3 +21,20 @@ This project also deviates from standard practices at some points in the hope of
 ### Neural Network
 - A _Neural Network_ is a collection of _Layers_, and some methods that describe how the `Network` learns, defining operations such as `forwardPropagation`, `lossFunctions`, `intermediateActivationFunctions` and `finalActivationFunctions`.
 - These functions can also be specified by the user, giving the user more control over the learning process.
+
+
+### Loss Functions
+- The loss functions are implemented in the `classes\loss` module. The loss functions are used to measure the performance of the _Neural Network_, against the known output data.
+- There are several loss functions implemented by default such as `MeanSquaredError`, `CrossEntropy` and `BinaryCrossEntropy`. 
+
+### Activations
+- The activations of a _Neural Network_ are on a high level, divided into two categories: _Intermediate Activation Functions_ and _Final Activation Functions_.
+- The Intermediate Activation Functions are the activation functions that are used to calculate the _activation value_ of the _Neuron_.
+- The Final Activation Functions are the activation functions that are used to calculate the _output_ of the _Neural Network_.
+- One can also specify layer by layer, the preffered activation function, giving even more experimental control over the learning process.
+
+
+## Customizing the Code.
+- Although a lot of low level functionalities are easily influenced by the user using arguments themselves, the user can customize the code to their liking.- If you do make any changes, make sure to go through the entire Detailed Documentation.
+- At the end, make sure that you also modify the tester.py file to your liking.
+- Run tests after the changes, but keep in mind that the tests are __NOT__ extensive.
