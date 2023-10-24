@@ -25,8 +25,12 @@ class Loss :
         if ( hasattr(self, "predicted") == False ):
             self.logger.logError(message="No predicted data provided for MeanSquaredError derivative.")
             return False
+        
+        if ( self.actual is None or self.predicted is None ):
+            self.logger.logError(message=f"No actual or predicted data provided for MeanSquaredError derivative. Actual : {self.actual}, Predicted : {self.predicted}")
+            return False
 
-        if ( actual.shape != predicted.shape ):
+        if ( self.actual.shape != self.predicted.shape ):
             self.logger.logError(message="Invalid shape provided as argument for MeanSquaredError derivative.")
             return False
         
@@ -40,20 +44,20 @@ class MeanSquaredError(Loss):
         try :
             super().computeFunction(predicted)
 
-            return numpy.sum(numpy.square(actual - predicted)/actual.shape[0])
+            return numpy.sum(numpy.square(self.actual - self.predicted)/self.actual.shape[0])
         except :
             self.logger.logException(message="MeanSquaredError Function")
             return None
     
     @override
-    def computeDerivative(self, neuronPosition : Union[int, numpy.ndarray]):
+    def computeDerivative(self, neuronPosition : Union[int, numpy.ndarray] = -1):
         try :
             super().computeDerivative()
             
-            neuronExpectedValue = self.actual[neuronPosition]
-            neuronPredictedValue = self.predicted[neuronPosition]
-            
-            return numpy.sum(2*(neuronExpectedValue - neuronPredictedValue)/actual.shape[0])
+            if ( neuronPosition == -1 ):
+                return 2*(self.actual - self.predicted)/self.actual.shape[0]
+            else :
+                return 2*(self.actual[neuronPosition] - self.predicted[neuronPosition])/self.actual.shape[0]
         except :
             self.logger.logException(message="MeanSquaredError Derivative")
             return None

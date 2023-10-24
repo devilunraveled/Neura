@@ -21,7 +21,7 @@ class NeuralNetwork:
     def __init__(self, numInputFeautures : int , numOutputFeatures : int, 
                  numHiddenLayers = 2, layerVector = [16,16], domain = [0,1],
                  intermediateActivationFunction = None, endActivationFunction = None,
-                 backPropagationAlgorithm = None, lossFunction = None, logger = Logger()):
+                 backPropagationAlgorithm = None, lossFunction = None, logger = None):
 
         self.numInputFeautures = numInputFeautures
         self.inputFeautures = numpy.array(numInputFeautures)
@@ -43,7 +43,7 @@ class NeuralNetwork:
 
         self.domain = domain
 
-        self.logger = logger
+        self.logger = logger if logger is not None else Logger()
         
         self.__weights__ = False
         self.__layers__ = False 

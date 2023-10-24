@@ -1,3 +1,4 @@
+from typing_extensions import override
 import numpy
 
 from logs import logger
@@ -19,32 +20,47 @@ class Tester():
 
         self.functionList = []
         self.argumentList = []
+    
+    def areSame(self, objectA, objectB ):
+        if type(objectA) != type(objectB) :
+            print(f"TYPE ERROR-- {objectA} and {objectB} are not of the same type. {type(objectA)} and {type(objectB)}")
+            return False
+
+        if isinstance(objectA, (int, float, complex)):
+            return objectA == objectB
+        
+        if isinstance(objectA, (list, tuple)):
+            for (thisElementA, thisElementB) in zip(objectA, objectB):
+                if not self.areSame(thisElementA, thisElementB):
+                    return False
+            return True
+
 
 class TestLossMeanSquaredError(Tester):
+    @override
     def __init__(self):
+        actual = numpy.array([1,2,5,6])
+        predicted = numpy.array([1,1,5,7])
+
         self.targetClass = loss.MeanSquaredError
-        self.targetObject = self.targetClass()
+        self.targetObject = self.targetClass(actual = actual)
         
         if ( self.targetObject == None ):
             print(f"INIT ERROR-- Failed to create MeanSquaredError object.")
             return -1
 
-        self.functionList = [self.targetObject.computeFunction, self.targetObject.computeDerivative]
-        actual = numpy.array([1,2,5,6])
-        predicted = numpy.array([1,2,5,7])
-
-        self.validArgumentList = [[predicted, actual],[predicted, actual]]
-        self.validExpectedOutput = [0.25, -0.5]
+        self.functionList = [self.targetObject.computeFunction, self.targetObject.computeDerivative, self.targetObject.computeDerivative]
+        self.validArgumentList = [[predicted],[3],[]]
+        self.validExpectedOutput = [numpy.float64(0.5), numpy.float64(-0.5), numpy.array([0.0, 0.5, 0.0, -0.5])]
     
     def runAll(self):
         try :
             # Check if the corresponding function with corresponding valid arghument gives the valid output.
             for (thisFunction, arguments, expectedOutput) in zip(self.functionList, self.validArgumentList, self.validExpectedOutput):
                 recievedOutput = thisFunction(*arguments)
-                if ( type(recievedOutput) != type(expectedOutput) and recievedOutput != expectedOutput ):
-                    print(f"TEST ERROR-- Failed to compute {thisFunction.__name__} function with parameters {arguments}.")
+                if ( self.areSame(recievedOutput, expectedOutput) == False ):
+                    print(f"TEST FAIL-- Incorrret Result for {thisFunction.__name__} function with parameters {arguments}.")
                     print(f"Expected output : {expectedOutput}, Received output : {recievedOutput}")
-                    return -1
 
                 print(f"TEST SUCCESS-- Class : MeanSquaredError Function : {thisFunction.__name__}.")
             return 0

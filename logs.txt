@@ -290,3 +290,56 @@ ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with
 2023-10-24 16:02:07,292 - INFO - Getting bias vector for layer 3
 2023-10-24 16:02:07,293 - INFO - Layer Values updated.
 2023-10-24 16:02:07,293 - INFO - Forward propagation completed.
+2023-10-24 16:23:06,903 - ERROR - MeanSquaredError Function
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 43, in computeFunction
+    return numpy.sum(numpy.square(actual - predicted)/actual.shape[0])
+NameError: name 'actual' is not defined
+2023-10-24 16:23:06,903 - ERROR - MeanSquaredError Function
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 43, in computeFunction
+    return numpy.sum(numpy.square(actual - predicted)/actual.shape[0])
+NameError: name 'actual' is not defined
+2023-10-24 16:26:45,588 - ERROR - MeanSquaredError Function
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 43, in computeFunction
+    return numpy.sum(numpy.square(actual - predicted)/self.actual.shape[0])
+NameError: name 'actual' is not defined
+2023-10-24 16:26:45,588 - ERROR - MeanSquaredError Function
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 43, in computeFunction
+    return numpy.sum(numpy.square(actual - predicted)/self.actual.shape[0])
+NameError: name 'actual' is not defined
+2023-10-24 16:27:19,792 - ERROR - MeanSquaredError Derivative
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 51, in computeDerivative
+    super().computeDerivative()
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 29, in computeDerivative
+    if ( actual.shape != predicted.shape ):
+NameError: name 'actual' is not defined
+2023-10-24 16:27:19,792 - ERROR - MeanSquaredError Derivative
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 51, in computeDerivative
+    super().computeDerivative()
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 29, in computeDerivative
+    if ( actual.shape != predicted.shape ):
+NameError: name 'actual' is not defined
+2023-10-24 16:28:08,708 - ERROR - MeanSquaredError Derivative
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 51, in computeDerivative
+    super().computeDerivative()
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 29, in computeDerivative
+    if ( actual.shape != predicted.shape ):
+NameError: name 'actual' is not defined
+2023-10-24 16:28:42,531 - ERROR - MeanSquaredError Derivative
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 51, in computeDerivative
+    super().computeDerivative()
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 29, in computeDerivative
+    if ( actual.shape != predicted.shape ):
+NameError: name 'actual' is not defined
+2023-10-24 16:31:23,193 - ERROR - MeanSquaredError Derivative
+Traceback (most recent call last):
+  File "/home/devilunraveled/Projects/NeuralNetworks/NN/classes/loss.py", line 57, in computeDerivative
+    neuronExpectedValue = self.actual[neuronPosition]
+IndexError: index 5 is out of bounds for axis 0 with size 4
