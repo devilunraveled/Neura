@@ -1,8 +1,6 @@
 from typing_extensions import override
 import numpy
 
-from logs import logger
-
 from classes import loss
 from classes import neuron
 from classes import layer
@@ -55,13 +53,14 @@ class TestLossMeanSquaredError(Tester):
     
     def runAll(self):
         try :
-            # Check if the corresponding function with corresponding valid arghument gives the valid output.
+            # Check if the corresponding function with corresponding valid argument gives the valid output.
             for (thisFunction, arguments, expectedOutput) in zip(self.functionList, self.validArgumentList, self.validExpectedOutput):
                 recievedOutput = thisFunction(*arguments)
+
                 if ( self.areSame(recievedOutput, expectedOutput) == False ):
                     print(f"TEST FAIL-- Incorrret Result for {thisFunction.__name__} function with parameters {arguments}.")
                     print(f"Expected output : {expectedOutput}, Received output : {recievedOutput}")
-
+                
                 print(f"TEST SUCCESS-- Class : MeanSquaredError Function : {thisFunction.__name__}.")
             return 0
         except Exception as E:
